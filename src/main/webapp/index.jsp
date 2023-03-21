@@ -14,6 +14,10 @@
                 <h4 class="card-title">View Hotels</h4>
                 <a class="btn btn-primary" id="show-btn" href="hotel_chain.jsp">Show</a>
             </div>
+            <div class="card-body" id="card">
+                <h4 class="card-title">View Rooms</h4>
+                <a class="btn btn-primary" id="show-btn" href="room.jsp">Show</a>
+            </div>
         </div>
     </div>
 </html>
