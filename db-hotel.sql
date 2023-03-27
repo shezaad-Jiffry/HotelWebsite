@@ -569,5 +569,16 @@ ALTER TABLE Booking
 
 
     --VIEWS
-    CREATE VIEW room_area as SELECT room_number, country,region,street_name,street_number,postal_code FROM room JOIN hotel ON room.hotel_id = hotel.hotel_id;
-    CREATE VIEW room_capacity as SELECT room_number, hotel_id,capacity from room;
+    CREATE VIEW room_area as (
+                             SELECT hotel.country,hotel.region,
+                             COUNT (*)
+                             FROM (room JOIN hotel on room.hotel_id = hotel.hotel_id)
+                             GROUP BY (hotel.country,hotel.region));
+
+    CREATE VIEW available_rooms AS (SELECT  x.hotel_id, COUNT (x.hotel_id)
+                               FROM room AS x
+                               WHERE NOT EXISTS(
+                                       SELECT *
+                                       FROM booking AS y
+                                       WHERE (x.hotel_id = y.hotel_id and x.room_number = y.room_number))
+                               GROUP BY(x.hotel_id));
