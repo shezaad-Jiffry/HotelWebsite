@@ -58,4 +58,69 @@ public class HotelService {
             throw new Exception(e.getMessage());
         }
     }
+
+    public int getAvailableRoomsCount(int hotelID) throws Exception {
+        int count = 0;
+        // sql query
+        String sql = "SELECT count FROM available_rooms WHERE hotel_id = ?";
+
+        // connection object
+        ConnectionDB db = new ConnectionDB();
+        // data structure to keep all HotelChains retrieved from database
+        List<Hotel> hotels = new ArrayList<Hotel>();
+        // try connect to database, catch any exceptions
+        try (Connection con = db.getConnection()) {
+            // prepare statement
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1,hotelID);
+            ResultSet rs = stmt.executeQuery();
+            // iterate through the result set
+            while (rs.next()) {
+                count = rs.getInt("count");
+            }
+            // close result set
+            rs.close();
+            // close statement
+            stmt.close();
+            con.close();
+            db.close();
+            // return result
+            return count;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public int getAvailableRoomsInAreaCount(String country, String region) throws Exception {
+        int count = 0;
+        // sql query
+        String sql = "SELECT count FROM room_area WHERE country = ? and region = ?";
+
+        // connection object
+        ConnectionDB db = new ConnectionDB();
+        // data structure to keep all HotelChains retrieved from database
+        List<Hotel> hotels = new ArrayList<Hotel>();
+        // try connect to database, catch any exceptions
+        try (Connection con = db.getConnection()) {
+            // prepare statement
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1,country);
+            stmt.setString(2,region);
+            ResultSet rs = stmt.executeQuery();
+            // iterate through the result set
+            while (rs.next()) {
+                count = rs.getInt("count");
+            }
+            // close result set
+            rs.close();
+            // close statement
+            stmt.close();
+            con.close();
+            db.close();
+            // return result
+            return count;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

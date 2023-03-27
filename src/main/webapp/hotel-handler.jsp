@@ -3,15 +3,22 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.HotelProject.*" %>
-<h1>ROOMS</h1>
+
 <%
   // get values from the request
   String country = request.getParameter("country");
   String region = request.getParameter("region");
   HotelService hotelService = new HotelService();
   List<Hotel> hotels = null;
+  int[]roomCounts = null;
+  int roomsInArea = 0;
   try {
     hotels = hotelService.getHotel(country,region);
+    roomCounts = new int[hotels.size()];
+    roomsInArea = hotelService.getAvailableRoomsInAreaCount(country,region);
+    for(int i = 0; i < hotels.size(); i++){
+      roomCounts[i] = hotelService.getAvailableRoomsCount(hotels.get(i).getHotelID());
+    }
   } catch (Exception e) {
     e.printStackTrace();
   }
@@ -19,7 +26,8 @@
 %>
 
 <html>
-
+<h1>ROOMS</h1>
+<h2>there are a total of <%=roomsInArea %>  rooms in <%=country + "," + region %></h2>
 <div class="container">
   <div class="row" id="row">
     <div class="col-md-12">
@@ -38,10 +46,11 @@
                 <th>street_name</th>
                 <th>postal code</th>
                 <th>rating</th>
+                <th>available rooms</th>
               </tr>
               </thead>
               <tbody>
-              <%
+              <% int i = 0;
                 for (Hotel hotel : hotels) { %>
               <tr >
                 <td><%= hotel.getChainName() %></td>
@@ -50,6 +59,7 @@
                 <td><%= hotel.getStreetName() %></td>
                 <td><%= hotel.getPostalCode() %></td>
                 <td><%= hotel.getRating() %></td>
+                <td><%= roomCounts[i] %></td>
                 <form method="POST" action="room.jsp">
                   <td>
                     <input type="hidden" value="<%= hotel.getHotelID() %>" name="hotel_id" />
@@ -57,7 +67,7 @@
                   </td>
                 </form>
               </tr>
-              <% } %>
+              <% i++;} %>
               </tbody>
             </table>
           </div>

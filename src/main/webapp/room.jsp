@@ -8,6 +8,7 @@
 <%@ page import="com.HotelProject.RoomService" %>
 <%@ page import="com.HotelProject.Room" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.HotelProject.HotelService" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -16,9 +17,12 @@
   String hotelId = request.getParameter("hotel_id");
   int hotel_id = Integer.parseInt(hotelId);
   RoomService roomService = new RoomService();
+  HotelService hotelService = new HotelService();
   List<Room> rooms = null;
+
   try {
     rooms = roomService.getRoom(hotel_id);
+
   } catch (Exception e) {
     e.printStackTrace();
   }
@@ -28,6 +32,7 @@
 <html>
 
 <div class="container">
+
   <div class="row" id="row">
     <div class="col-md-12">
       <div class="card" id="card-container">
@@ -60,6 +65,13 @@
                 <td><%= room.getIssues() %></td>
                 <td><%= room.getscenery() %></td>
                 <td><%= room.isExtendable() %></td>
+                <form method="POST" action="purchase.jsp">
+                  <td>
+                    <input type="hidden" value="<%= room.getHotelID() %>" name="hotel_id" />
+                    <input type="hidden" value="<%= room.getRoomNumber() %>" name="room_number" />
+                    <button type="Book Room" class="btn btn-primary btn-submit-custom">Book</button>
+                  </td>
+                </form>
               </tr>
               <% } %>
               </tbody>
