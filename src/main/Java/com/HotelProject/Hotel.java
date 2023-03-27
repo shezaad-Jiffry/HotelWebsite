@@ -8,12 +8,13 @@ public class Hotel {
     private int streetNumber;
     private String postalCode;
     private String email;
-    private int rating;
+    private float rating;
     private int numberRooms;
     private String chainName;
+    private String phoneNumber;
 
     //constructor for hotel (the data is premade for this all that has to be done is the gathering of it so no different constructor)
-    public Hotel(int hotelID, String country, String region, String streetName, int streetNumber, String postalCode, String email, int rating, int numberRooms, String chainName) {
+    public Hotel(int hotelID, String country, String region, String streetName, int streetNumber, String postalCode, String email,String phoneNumber, float rating, int numberRooms, String chainName) {
         this.hotelID = hotelID;
         this.country = country;
         this.region = region;
@@ -21,6 +22,7 @@ public class Hotel {
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
         this.email = email;
+        this.phoneNumber = phoneNumber;
         this.rating = rating;
         this.numberRooms = numberRooms;
         this.chainName = chainName;
@@ -54,7 +56,7 @@ public class Hotel {
         return email;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
@@ -65,6 +67,10 @@ public class Hotel {
     public String getChainName() {
         return chainName;
     }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
     @Override
     public String toString() {
         return "<ul>"

@@ -12,42 +12,54 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-  // retrieve room from database
+  // get values from the request
+  String hotelId = request.getParameter("hotel_id");
+  int hotel_id = Integer.parseInt(hotelId);
   RoomService roomService = new RoomService();
   List<Room> rooms = null;
   try {
-    rooms = roomService.getRoom();
+    rooms = roomService.getRoom(hotel_id);
   } catch (Exception e) {
     e.printStackTrace();
   }
+
 %>
 
 <html>
+
 <div class="container">
   <div class="row" id="row">
     <div class="col-md-12">
       <div class="card" id="card-container">
         <div class="card-body" id="card">
           <% if (rooms.size() == 0) { %>
-          <h1 style="margin-top: 5rem;">No Hotels found</h1>
+          <h1 style="margin-top: 5rem;">No rooms found in the area specified</h1>
           <% } else { %>
           <div class="table-responsive">
             <table class="table">
-              <thead>
+              <thead >
               <tr>
-                <th>Room number</th>
-                <th>issues</th>
+                <th>room_number</th>
+                <th>price</th>
+                <th>capacity</th>
                 <th>amenities</th>
-                <th></th>
+                <th>issues</th>
+                <th>scenery</th>
+                <th>extendable?</th>
+
               </tr>
               </thead>
               <tbody>
               <%
                 for (Room room : rooms) { %>
-              <tr>
+              <tr >
                 <td><%= room.getRoomNumber() %></td>
-                <td><%= room.getIssues() %></td>
+                <td><%= room.getPrice() %></td>
+                <td><%= room.getCapacity() %></td>
                 <td><%= room.getAmenities() %></td>
+                <td><%= room.getIssues() %></td>
+                <td><%= room.getscenery() %></td>
+                <td><%= room.isExtendable() %></td>
               </tr>
               <% } %>
               </tbody>
@@ -59,4 +71,5 @@
     </div>
   </div>
 </div>
+
 </html>

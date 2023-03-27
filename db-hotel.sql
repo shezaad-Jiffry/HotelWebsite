@@ -567,3 +567,7 @@ ALTER TABLE Booking
     (105,ARRAY['Moldy Walls'], 'mountain', 'False', 100.00,ARRAY['wifi','Safe'], 6, 40)
     ON CONFLICT DO NOTHING;
 
+
+    --VIEWS
+    CREATE VIEW room_area as SELECT room_number, country,region,street_name,street_number,postal_code FROM room JOIN hotel ON room.hotel_id = hotel.hotel_id;
+    CREATE VIEW room_capacity as SELECT room_number, hotel_id,capacity from room;
