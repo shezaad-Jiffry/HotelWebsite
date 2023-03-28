@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS Archive(
 	date_rented_end DATE NOT NULL,
 	hotel_chain TEXT NOT NULL,
 	employee NUMERIC (9,0) NOT NULL,
-	hotel_id INT UNIQUE NOT NULL,
+	hotel_id INT NOT NULL,
 	constraint pk_archive PRIMARY KEY (date_booked,room_number,date_rented_start,date_rented_end,hotel_chain,
 									  employee,hotel_id)
 );
@@ -90,10 +90,11 @@ CREATE TABLE IF NOT EXISTS Archive(
 CREATE TABLE IF NOT EXISTS Renting(
 	date_rented_start DATE NOT NULL,
 	date_rented_end DATE NOT NULL,
-	employee_ssn NUMERIC (9,0) UNIQUE NOT NULL,
-	customer_ssn NUMERIC (9,0) UNIQUE NOT NULL,
+	employee_ssn NUMERIC (9,0) NOT NULL,
+	customer_ssn NUMERIC (9,0) NOT NULL,
 	room_number INT NOT NULL,
-	hotel_id INT UNIQUE NOT NULL
+	hotel_id INT NOT NULL,
+    PRIMARY KEY (room_number, hotel_id,customer_ssn)
 );
 ALTER TABLE Renting
 	DROP CONSTRAINT IF EXISTS fk_employee_ssn;
@@ -123,9 +124,10 @@ CREATE TABLE IF NOT EXISTS Booking(
 	date_booked DATE NOT NULL,
 	renting_start DATE NOT NULL,
 	renting_end DATE NOT NULL,
-	customer_ssn NUMERIC (9,0) UNIQUE NOT NULL,
+	customer_ssn NUMERIC (9,0) NOT NULL,
 	room_number INT NOT NULL,
-	hotel_id INT UNIQUE NOT NULL
+	hotel_id INT NOT NULL,
+    PRIMARY KEY (room_number, hotel_id,customer_ssn)
 );
 
 ALTER TABLE Booking

@@ -1,10 +1,11 @@
 package com.HotelProject;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 
-public class CustomerService {
-    public String createCustomer(Customer customer) throws Exception {
+public class BookingService {
+    public String createBooking(Booking booking) throws Exception {
         String message = "";
         Connection con = null;
 
@@ -12,25 +13,23 @@ public class CustomerService {
         ConnectionDB db = new ConnectionDB();
 
         // sql query
-        String insertCustomerQuery = "INSERT INTO customer VALUES (?,?,?,?,?,?,?,?,?) ON CONFLICT DO NOTHING;";
+        String insertBookingQuery = "INSERT INTO booking VALUES (?,?,?,?,?,?);";
 
         // try connect to database, catch any exceptions
         try {
             con = db.getConnection(); //get Connection
 
             // prepare the statement
-            PreparedStatement stmt = con.prepareStatement(insertCustomerQuery);
-
+            PreparedStatement stmt = con.prepareStatement(insertBookingQuery);
+            Date rentingStartSQL = Date.valueOf(booking.getRentingStart());
+            Date rentingEndSQL = Date.valueOf(booking.getRentingEnd());
             // set every ? of statement
-            stmt.setInt(1, customer.getSsn());
-            stmt.setDate(2, customer.getRegistrationDate());
-            stmt.setString(3, customer.getFirstName());
-            stmt.setString(4, customer.getLastName());
-            stmt.setString(5, customer.getCountry());
-            stmt.setString(6, customer.getRegion());
-            stmt.setString(7, customer.getStreetName());
-            stmt.setInt(8, customer.getStreetNumber());
-            stmt.setString(9, customer.getPostalCode());
+            stmt.setDate(1, booking.getDateBooked());
+            stmt.setDate(2, rentingStartSQL);
+            stmt.setDate(3, rentingEndSQL);
+            stmt.setInt(4, booking.getCustomerSSN());
+            stmt.setInt(5, booking.getRoomNumber());
+            stmt.setInt(6, booking.getHotelID());
 
             // execute the query
             stmt.executeUpdate();
