@@ -3,6 +3,9 @@ package com.HotelProject;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookingService {
     public String createBooking(Booking booking) throws Exception {
@@ -49,5 +52,45 @@ public class BookingService {
 
         // return respective message
         return message;
+    }
+    public List<Booking> getBooking() throws Exception {
+
+        // sql query
+        String sql = "SELECT * FROM Booking";
+        // connection object
+        ConnectionDB db = new ConnectionDB();
+        // data structure to keep all HotelChains retrieved from database
+        List<Booking> bookings = new ArrayList<Booking>();
+        // try connect to database, catch any exceptions
+        try (Connection con = db.getConnection()) {
+            // prepare statement
+            PreparedStatement stmt = con.prepareStatement(sql);
+            // get the results from executing the query
+            ResultSet rs = stmt.executeQuery();
+            // iterate through the result set
+            while (rs.next()) {
+                // create new HotelChain object
+                Booking booking = new Booking(
+                        rs.getDate("date_booked"),
+                        rs.getString("renting_start"),
+                        rs.getString("renting_end"),
+                        rs.getInt("customer_ssn"),
+                        rs.getInt("room_number"),
+                        rs.getInt("hotel_id")
+                );
+                // append hotel chain in hotel chain list
+                bookings.add(booking);
+            }
+            // close result set
+            rs.close();
+            // close statement
+            stmt.close();
+            con.close();
+            db.close();
+            // return result
+            return bookings;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }

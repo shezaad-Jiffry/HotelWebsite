@@ -11,11 +11,11 @@
     <div class="col-md-4">
         <div class="card" id="card-container-layout">
             <div class="card-body" id="card">
-                <h4 class="card-title">Book a room now!</h4>
-                <a class="btn btn-primary" id="show-btn" href="hotel.jsp">Book a room</a>
-
+                <h4 class="card-title">Switch the booking to renting or make a direct renting</h4>
+                <a class="btn btn-primary" id="show-btn" href="booking.jsp">View current bookings</a>
             </div>
-            <a class="btn btn-primary" id="show-btn" href="employee.jsp">Switch to employee view</a>
+            <a class="btn btn-primary" id="show-btn" href="hotel.jsp">Make a direct renting</a>
+
         </div>
     </div>
 </html>
