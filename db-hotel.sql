@@ -584,3 +584,7 @@ ALTER TABLE Booking
                                        FROM booking AS y
                                        WHERE (x.hotel_id = y.hotel_id and x.room_number = y.room_number))
                                GROUP BY(x.hotel_id));
+    --same view without the count
+    CREATE VIEW available_rooms_no_count AS (SELECT  * FROM room AS x WHERE NOT EXISTS
+    (SELECT * FROM booking AS y
+    WHERE (x.hotel_id = y.hotel_id and x.room_number = y.room_number)));

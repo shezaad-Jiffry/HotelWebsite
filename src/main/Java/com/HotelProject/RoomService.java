@@ -16,7 +16,7 @@ public class RoomService {
     public List<Room> getRoom(int hotelID) throws Exception {
 
         // sql query
-        String sql = "SELECT * FROM room WHERE hotel_id = ?";
+        String sql = "SELECT * FROM available_rooms_no_count WHERE hotel_id = ?";
         // connection object
         ConnectionDB db = new ConnectionDB();
 

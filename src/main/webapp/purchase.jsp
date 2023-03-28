@@ -60,11 +60,11 @@
                     </div>
                     <div class="form-group col-sm-3 mb-3">
                         <label for="renting_start">renting start</label>
-                        <input id = "renting_start" type="text" class="form-control" name="renting_start" placeholder="yyyy-mm-dd">
+                        <input id = "renting_start" type="date" class="form-control" name="renting_start" placeholder="yyyy-mm-dd">
                     </div>
                     <div class="form-group col-sm-3 mb-3">
                         <label for="renting_end">renting end</label>
-                        <input id = "renting_end" type="text" class="form-control" name="renting_end" placeholder="yyyy-mm-dd">
+                        <input id = "renting_end" type="date" class="form-control" name="renting_end" placeholder="yyyy-mm-dd">
                     </div>
                     <input type="hidden" value="<%= hotelId %>" name="hotel_id" />
                     <input type="hidden" value="<%= roomNumber %>" name="room_number" />
