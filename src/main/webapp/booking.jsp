@@ -47,8 +47,13 @@
                 <td><%= booking.getCustomerSSN() %></td>
                 <td><%= booking.getRoomNumber() %></td>
                 <td><%= booking.getHotelID() %></td>
-                <form method="POST" action="room.jsp">
+                <form method="POST" action="renting.jsp">
                   <td>
+                    <input type="hidden" value="<%= booking.getRentingStart() %>" name="rentingStart" />
+                    <input type="hidden" value="<%= booking.getRentingEnd() %>" name="rentingEnd" />
+                    <input type="hidden" value="<%= booking.getCustomerSSN() %>" name="customerSSN" />
+                    <input type="hidden" value="<%= booking.getRoomNumber() %>" name="roomNumber" />
+                    <input type="hidden" value="<%= booking.getHotelID() %>" name="hotelID" />
                     <button type="view rooms" class="btn btn-primary btn-submit-custom">transfer to renting</button>
                   </td>
                 </form>
