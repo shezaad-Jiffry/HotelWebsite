@@ -570,45 +570,51 @@ ALTER TABLE Booking
     ON CONFLICT DO NOTHING;
 
 
-    --VIEWS
-    CREATE VIEW room_area as (
+--VIEWS
+CREATE VIEW room_area as (
                              SELECT hotel.country,hotel.region,
                              COUNT (*)
                              FROM (room JOIN hotel on room.hotel_id = hotel.hotel_id)
                              GROUP BY (hotel.country,hotel.region));
 
-    CREATE VIEW available_rooms AS (SELECT  x.hotel_id, COUNT (x.hotel_id)
+
+CREATE VIEW available_rooms AS (SELECT  x.hotel_id, COUNT (x.hotel_id)
                                FROM room AS x
                                WHERE NOT EXISTS(
                                        SELECT *
-                                       FROM booking AS y
+                                       FROM (booking right join renting USING (hotel_id,room_number,customer_ssn)) AS y
                                        WHERE (x.hotel_id = y.hotel_id and x.room_number = y.room_number))
                                GROUP BY(x.hotel_id));
-    --same view without the count
-    CREATE VIEW available_rooms_no_count AS (SELECT  * FROM room AS x WHERE NOT EXISTS
-    (SELECT * FROM booking AS y
-    WHERE (x.hotel_id = y.hotel_id and x.room_number = y.room_number)));
 
-    CREATE OR REPLACE FUNCTION Booking_Created() RETURNS TRIGGER AS
-    $BODY$
-    BEGIN
-        INSERT INTO archive(date_booked,room_number,date_rented_start,date_rented_end,hotel_id,customer)
-        VALUES(new.date_booked,new.room_number,new.renting_start,new.renting_end,new.hotel_id,new.customer_ssn);
-        RETURN new;
-    END;
-    $BODY$
-        language plpgsql;
 
-    CREATE TRIGGER booking_create
-        AFTER INSERT ON booking
-        FOR EACH ROW
-    EXECUTE PROCEDURE Booking_created();
+--same view without the count
+CREATE VIEW available_rooms_no_count AS (SELECT  * FROM room AS x WHERE NOT EXISTS
+        (SELECT * FROM (booking right join renting USING (hotel_id,room_number,customer_ssn))AS y
+         WHERE (x.hotel_id = y.hotel_id and x.room_number = y.room_number)));
+--triggers
+CREATE OR REPLACE FUNCTION Booking_Created() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    INSERT INTO archive(date_booked,room_number,date_rented_start,date_rented_end,hotel_id,customer)
+    VALUES(new.date_booked,new.room_number,new.renting_start,new.renting_end,new.hotel_id,new.customer_ssn);
+    RETURN new;
+END;
+$BODY$
+    language plpgsql;
+
+CREATE TRIGGER booking_create
+    AFTER INSERT ON booking
+    FOR EACH ROW
+EXECUTE PROCEDURE Booking_created();
 
 CREATE OR REPLACE FUNCTION Renting_Created() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    INSERT INTO archive(employee)
-    VALUES(new.employee_ssn);
+    UPDATE archive
+    SET employee = new.employee_ssn
+    WHERE hotel_id = new.hotel_id and room_number = new.room_number and customer = new.customer_ssn;
+    DELETE FROM booking
+    WHERE new.hotel_id = booking.hotel_id and new.room_number = booking.room_number and new.customer_ssn = booking.customer_ssn;
     RETURN new;
 END;
 $BODY$
