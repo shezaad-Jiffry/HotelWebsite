@@ -5,10 +5,6 @@
   Time: 5:00 p.m.
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="com.HotelProject.RoomService" %>
-<%@ page import="com.HotelProject.Room" %>
-<%@ page import="java.util.List" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
