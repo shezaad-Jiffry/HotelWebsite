@@ -17,6 +17,7 @@
     String postalCode = request.getParameter("postal_code");
     String rentingStart = request.getParameter("renting_start");
     String rentingEnd = request.getParameter("renting_end");
+    String hotelChainName = request.getParameter("hotel_chain_name");
     CustomerService customerService = new CustomerService();
     BookingService bookingService = new BookingService();
     String strHotelId = request.getParameter("hotel_id");
@@ -64,14 +65,18 @@
         }
         System.out.println(msg.value);
         if(msg.value.contains("success")){
+            String value = bookingService.updateArchive(booking,hotelChainName);
+            request.setAttribute("message", "successfully created booking");
             response.sendRedirect("index.jsp");
         }
         else {
-            response.sendRedirect("purchase.jsp");
+            request.setAttribute("message", "unsuccessfully created booking");
+            response.sendRedirect("employee.jsp");
         }
     }
     else{
-        response.sendRedirect("purchase.jsp");
+        request.setAttribute("message", "unsuccessfully created booking");
+        response.sendRedirect("employee.jsp");
 
     }
 

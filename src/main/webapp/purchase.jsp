@@ -10,6 +10,7 @@
 <%
     String hotelId = request.getParameter("hotel_id");
     String roomNumber = request.getParameter("room_number");
+    String hotelChainName = request.getParameter("hotel_chain_name");
 %>
 
 <html>
@@ -64,6 +65,7 @@
                     </div>
                     <input type="hidden" value="<%= hotelId %>" name="hotel_id" />
                     <input type="hidden" value="<%= roomNumber %>" name="room_number" />
+                    <input type="hidden" value="<%= hotelChainName %>" name="hotel_chain_name" />
                     <button type="submit" class="btn btn-primary btn-submit-custom">Submit</button>
                 </form>
             </div>

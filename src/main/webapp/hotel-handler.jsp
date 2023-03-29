@@ -63,6 +63,7 @@
                 <form method="POST" action="room.jsp">
                   <td>
                     <input type="hidden" value="<%= hotel.getHotelID() %>" name="hotel_id" />
+                    <input type="hidden" value="<%= hotel.getChainName() %>" name="hotel_chain_name" />
                     <button type="view rooms" class="btn btn-primary btn-submit-custom">View Rooms</button>
                   </td>
                 </form>

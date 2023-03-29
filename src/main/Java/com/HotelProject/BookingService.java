@@ -93,4 +93,46 @@ public class BookingService {
             throw new Exception(e.getMessage());
         }
     }
+    public String updateArchive(Booking booking, String hotelChain) throws Exception {
+        String message = "";
+        Connection con = null;
+
+        // connection object
+        ConnectionDB db = new ConnectionDB();
+
+        // sql query
+        String updateArchiveQuery = "UPDATE archive SET hotel_chain = ? WHERE hotel_id = ? and room_number = ? and customer = ?";
+
+        // try connect to database, catch any exceptions
+        try {
+            con = db.getConnection(); //get Connection
+
+            // prepare the statement
+            PreparedStatement stmt = con.prepareStatement(updateArchiveQuery);
+            // set every ? of statement
+            stmt.setString(1, hotelChain);
+            stmt.setInt(2, booking.getHotelID());
+            stmt.setInt(3, booking.getRoomNumber());
+            stmt.setInt(4, booking.getCustomerSSN());
+
+
+            // execute the query
+            stmt.executeUpdate();
+
+            // close the statement
+            stmt.close();
+            // close the connection
+            db.close();
+        } catch (Exception e) {
+            message = "Error while inserting customer: " + e.getMessage();
+        } finally {
+            if (con != null) // if connection is still open, then close.
+                con.close();
+            if (message.equals("")) message = "customer successfully inserted!";
+
+        }
+
+        // return respective message
+        return message;
+    }
 }

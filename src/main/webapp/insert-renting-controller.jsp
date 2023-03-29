@@ -39,7 +39,7 @@
         msg = new Message("error", "Something went wrong!");
 
     }
-    System.out.println(msg.value);
+
     // create an arraylist of messages and append the new message
     ArrayList<Message> messages = new ArrayList<>();
     messages.add(msg);
@@ -62,13 +62,18 @@
         }
 
         if(msg.value.contains("success")){
+            request.setAttribute("message", "successfully turned booking into renting");
             response.sendRedirect("index.jsp");
         }
         else {
+            System.out.println(msg.value);
+            request.setAttribute("message", "unsuccessfully turned booking into renting");
             response.sendRedirect("booking.jsp");
         }
     }
     else{
+        System.out.println(msg.value);
+        request.setAttribute("message", "unsuccessfully turned booking into renting");
         response.sendRedirect("booking.jsp");
 
     }

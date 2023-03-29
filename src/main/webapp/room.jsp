@@ -15,6 +15,7 @@
 <%
   // get values from the request
   String hotelId = request.getParameter("hotel_id");
+  String hotelChainName = request.getParameter("hotel_chain_name");
   int hotel_id = Integer.parseInt(hotelId);
   RoomService roomService = new RoomService();
   HotelService hotelService = new HotelService();
@@ -69,6 +70,7 @@
                   <td>
                     <input type="hidden" value="<%= room.getHotelID() %>" name="hotel_id" />
                     <input type="hidden" value="<%= room.getRoomNumber() %>" name="room_number" />
+                    <input type="hidden" value="<%= hotelChainName %>" name="hotel_chain_name" />
                     <button type="Book Room" class="btn btn-primary btn-submit-custom">Book</button>
                   </td>
                 </form>

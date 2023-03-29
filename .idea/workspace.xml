@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33243d05-e250-4a28-a29b-7d84de82c157" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/insert-renting-controller.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-03-28_12_41_p_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-03-28_12_41_p_m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/direct-renting.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/HotelProject/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/HotelProject/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-hotel.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db-hotel.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/HotelProject/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/HotelProject/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/employee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/employee.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/hotel-handler.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/hotel-handler.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/insert-customer-controller.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/insert-customer-controller.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/insert-renting-controller.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/insert-renting-controller.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/purchase.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/purchase.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/renting.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/renting.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/room.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/room.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -135,7 +140,8 @@
       <workItem from="1678305973860" duration="5198000" />
       <workItem from="1678733927494" duration="9079000" />
       <workItem from="1679937186311" duration="20057000" />
-      <workItem from="1680049345787" duration="3428000" />
+      <workItem from="1680049345787" duration="4898000" />
+      <workItem from="1680107072240" duration="11639000" />
     </task>
     <servers />
   </component>

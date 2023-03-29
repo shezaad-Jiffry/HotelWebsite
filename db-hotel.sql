@@ -76,15 +76,15 @@ ALTER TABLE Employee
 	REFERENCES hotel(hotel_id);
 
 CREATE TABLE IF NOT EXISTS Archive(
-	date_booked DATE NOT NULL,
-	room_number INT NOT NULL,
-	date_rented_start DATE NOT NULL,
-	date_rented_end DATE NOT NULL,
-	hotel_chain TEXT NOT NULL,
-	employee NUMERIC (9,0) NOT NULL,
-	hotel_id INT NOT NULL,
-	constraint pk_archive PRIMARY KEY (date_booked,room_number,date_rented_start,date_rented_end,hotel_chain,
-									  employee,hotel_id)
+    date_booked DATE,
+    room_number INT ,
+    date_rented_start DATE ,
+    date_rented_end DATE ,
+    hotel_chain TEXT,
+    employee NUMERIC (9,0),
+    hotel_id INT ,
+    customer NUMERIC (9,0),
+    constraint pk_archive PRIMARY KEY (room_number,hotel_id,customer)
 );
 
 CREATE TABLE IF NOT EXISTS Renting(
@@ -588,3 +588,33 @@ ALTER TABLE Booking
     CREATE VIEW available_rooms_no_count AS (SELECT  * FROM room AS x WHERE NOT EXISTS
     (SELECT * FROM booking AS y
     WHERE (x.hotel_id = y.hotel_id and x.room_number = y.room_number)));
+
+    CREATE OR REPLACE FUNCTION Booking_Created() RETURNS TRIGGER AS
+    $BODY$
+    BEGIN
+        INSERT INTO archive(date_booked,room_number,date_rented_start,date_rented_end,hotel_id,customer)
+        VALUES(new.date_booked,new.room_number,new.renting_start,new.renting_end,new.hotel_id,new.customer_ssn);
+        RETURN new;
+    END;
+    $BODY$
+        language plpgsql;
+
+    CREATE TRIGGER booking_create
+        AFTER INSERT ON booking
+        FOR EACH ROW
+    EXECUTE PROCEDURE Booking_created();
+
+CREATE OR REPLACE FUNCTION Renting_Created() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    INSERT INTO archive(employee)
+    VALUES(new.employee_ssn);
+    RETURN new;
+END;
+$BODY$
+    language plpgsql;
+
+CREATE TRIGGER renting_create
+    AFTER INSERT ON renting
+    FOR EACH ROW
+EXECUTE PROCEDURE Renting_created();
