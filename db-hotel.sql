@@ -624,3 +624,9 @@ CREATE TRIGGER renting_create
     AFTER INSERT ON renting
     FOR EACH ROW
 EXECUTE PROCEDURE Renting_created();
+
+CREATE INDEX ON Hotel (hotel_id) WHERE number_rooms >5;
+
+CREATE INDEX ON Hotel (rating) WHERE rating >3.5;
+
+CREATE INDEX ON Hotel_chain (number_hotels) WHERE rating >4;
