@@ -73,7 +73,7 @@
     }
     else{
         System.out.println(msg.value);
-        request.setAttribute("message", "unsuccessfully inserted the employee ");
+        request.setAttribute("message", "unsuccessfully inserted the employee");
         response.sendRedirect("error.jsp");
 
     }
