@@ -72,7 +72,7 @@
         else if(msg.value.contains("Date")){
                          String value = bookingService.updateArchive(booking,hotelChainName);
                          request.getSession().setAttribute("message", "dates are wrong");
-                         response.sendRedirect("employee.jsp");
+                         response.sendRedirect("error.jsp");
         }
         else {
             request.getSession().setAttribute("message", "unsuccessfully created booking");

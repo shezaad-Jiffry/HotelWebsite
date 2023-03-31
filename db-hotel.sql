@@ -582,14 +582,14 @@ CREATE VIEW available_rooms AS (SELECT  x.hotel_id, COUNT (x.hotel_id)
                                FROM room AS x
                                WHERE NOT EXISTS(
                                        SELECT *
-                                       FROM (booking right join renting USING (hotel_id,room_number,customer_ssn)) AS y
+                                       FROM (booking full join renting USING (hotel_id,room_number,customer_ssn)) AS y
                                        WHERE (x.hotel_id = y.hotel_id and x.room_number = y.room_number))
                                GROUP BY(x.hotel_id));
 
 
 --same view without the count
 CREATE VIEW available_rooms_no_count AS (SELECT  * FROM room AS x WHERE NOT EXISTS
-        (SELECT * FROM (booking right join renting USING (hotel_id,room_number,customer_ssn))AS y
+        (SELECT * FROM (booking full join renting USING (hotel_id,room_number,customer_ssn))AS y
          WHERE (x.hotel_id = y.hotel_id and x.room_number = y.room_number)));
 --triggers
 CREATE OR REPLACE FUNCTION Booking_Created() RETURNS TRIGGER AS
@@ -629,4 +629,4 @@ CREATE INDEX ON Hotel (hotel_id) WHERE number_rooms >5;
 
 CREATE INDEX ON Hotel (rating) WHERE rating >3.5;
 
-CREATE INDEX ON Hotel_chain (number_hotels) WHERE rating >4;
+CREATE INDEX ON Hotel_chain (number_hotels) WHERE number_hotels >4;

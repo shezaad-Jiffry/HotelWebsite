@@ -16,11 +16,14 @@ public class BookingService {
 
         // connection object
         ConnectionDB db = new ConnectionDB();
-        DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date rentStartdate = format.parse(booking.getRentingStart());
         java.util.Date rentEndDate = format.parse(booking.getRentingEnd());
         int isAfter = rentStartdate.compareTo(rentEndDate);
-        if(isAfter <=0){
+        System.out.println("isafter value" + isAfter);
+        System.out.println("datebefore is " + rentStartdate.toString());
+        System.out.println("dateafter is " + rentEndDate.toString());
+        if(isAfter >=0){
             message = "Date entered on start is after end date!";
             db.close();
             return message;
