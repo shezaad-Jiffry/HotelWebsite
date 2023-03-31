@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,15 @@ public class BookingService {
 
         // connection object
         ConnectionDB db = new ConnectionDB();
-
+        DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        java.util.Date rentStartdate = format.parse(booking.getRentingStart());
+        java.util.Date rentEndDate = format.parse(booking.getRentingEnd());
+        int isAfter = rentStartdate.compareTo(rentEndDate);
+        if(isAfter <=0){
+            message = "Date entered on start is after end date!";
+            db.close();
+            return message;
+        }
         // sql query
         String insertBookingQuery = "INSERT INTO booking VALUES (?,?,?,?,?,?);";
 

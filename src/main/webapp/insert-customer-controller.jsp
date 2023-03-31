@@ -63,20 +63,25 @@
             e.printStackTrace();
             msg = new Message("error", "Something went wrong!");
         }
-        System.out.println(msg.value);
+        System.out.println(msg.value + " value");
         if(msg.value.contains("success")){
             String value = bookingService.updateArchive(booking,hotelChainName);
             request.setAttribute("message", "successfully created booking");
             response.sendRedirect("index.jsp");
         }
+        else if(msg.value.contains("Date")){
+                         String value = bookingService.updateArchive(booking,hotelChainName);
+                         request.getSession().setAttribute("message", "dates are wrong");
+                         response.sendRedirect("employee.jsp");
+        }
         else {
-            request.setAttribute("message", "unsuccessfully created booking");
-            response.sendRedirect("employee.jsp");
+            request.getSession().setAttribute("message", "unsuccessfully created booking");
+            response.sendRedirect("error.jsp");
         }
     }
     else{
-        request.setAttribute("message", "unsuccessfully created booking");
-        response.sendRedirect("employee.jsp");
+        request.getSession().setAttribute("message", "unsuccessfully created booking");
+        response.sendRedirect("error.jsp");
 
     }
 

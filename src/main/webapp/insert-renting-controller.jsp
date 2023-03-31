@@ -68,13 +68,13 @@
         else {
             System.out.println(msg.value);
             request.setAttribute("message", "unsuccessfully turned booking into renting");
-            response.sendRedirect("booking.jsp");
+            response.sendRedirect("error.jsp");
         }
     }
     else{
         System.out.println(msg.value);
         request.setAttribute("message", "unsuccessfully turned booking into renting");
-        response.sendRedirect("booking.jsp");
+        response.sendRedirect("error.jsp");
 
     }
 
