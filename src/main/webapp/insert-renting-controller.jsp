@@ -63,7 +63,7 @@
 
         if(msg.value.contains("success")){
             request.setAttribute("message", "successfully turned booking into renting");
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("success.jsp");
         }
         else {
             System.out.println(msg.value);

@@ -67,7 +67,7 @@
         if(msg.value.contains("success")){
             String value = bookingService.updateArchive(booking,hotelChainName);
             request.setAttribute("message", "successfully created booking");
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("success.jsp");
         }
         else if(msg.value.contains("Date")){
                          String value = bookingService.updateArchive(booking,hotelChainName);
