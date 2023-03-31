@@ -71,11 +71,11 @@
         }
         else if(msg.value.contains("Date")){
                          String value = bookingService.updateArchive(booking,hotelChainName);
-                         request.getSession().setAttribute("message", "dates are wrong");
+                         request.getSession().setAttribute("message", "before date is after the end date!");
                          response.sendRedirect("error.jsp");
         }
         else {
-            request.getSession().setAttribute("message", "unsuccessfully created booking");
+            request.getSession().setAttribute("message", "unsuccessfully created booking either room is already booked or you filled out a param wrong");
             response.sendRedirect("error.jsp");
         }
     }
