@@ -62,18 +62,18 @@
         }
 
         if(msg.value.contains("success")){
-            request.setAttribute("message", "successfully turned booking into renting");
+            request.getSession().setAttribute("message", "successfully turned booking into renting");
             response.sendRedirect("success.jsp");
         }
         else {
             System.out.println(msg.value);
-            request.setAttribute("message", "unsuccessfully turned booking into renting ");
+            request.getSession().setAttribute("message", "unsuccessfully turned booking into renting ");
             response.sendRedirect("error.jsp");
         }
     }
     else{
         System.out.println(msg.value);
-        request.setAttribute("message", "unsuccessfully inserted the employee");
+        request.getSession().setAttribute("message", "unsuccessfully inserted the employee");
         response.sendRedirect("error.jsp");
 
     }

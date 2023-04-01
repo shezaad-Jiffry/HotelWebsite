@@ -147,116 +147,103 @@ ALTER TABLE Booking
 	REFERENCES room(room_number, hotel_id);
 
     --Hotel_Chain Inserts--------------------------------------------------------------
-
-    INSERT INTO Hotel_Chain (chainname, country, region, street_name, street_number, postal_code, phonenumber, email, number_hotels)
-    VALUES
-    ('Hotel Chain A', 'Canada', 'Ontario', 'King Street', 123, 'M5V1G9', '1-416-123-4567', 'info@hotelchaina.com', 8),
-    ('Hotel Chain B', 'USA', 'California', 'Sunset Boulevard', 456, '90210', '1-310-555-1234', 'info@hotelchainb.com', 8),
-    ('Hotel Chain C', 'Mexico', 'Jalisco', 'Avenida de las Rosas', 789, '44110', '52-33-1235-4567', 'info@hotelchainc.com', 8),
-    ('Hotel Chain D', 'Canada', 'Quebec', 'Sainte-Catherine Street', 101, 'H3B1A3', '1-514-555-6789', 'info@hotelchaind.com', 8),
-    ('Hotel Chain E', 'USA', 'New York', 'Fifth Avenue', 789, '10019', '1-212-555-4321', 'info@hotelchaine.com', 8)
-    on conflict do nothing;
-
-
-    --Hotel Inserts---------------------------------------------------------------------
-
-
-    INSERT INTO Hotel_Chain (chainname, country, region, street_name, street_number, postal_code, phonenumber, email, number_hotels)
-    VALUES
+INSERT INTO Hotel_Chain (chainname, country, region, street_name, street_number, postal_code, phonenumber, email, number_hotels)
+VALUES
     ('Hotel Chain A', 'Canada', 'Ontario', 'King Street', 123, 'M5V1G9', '1-416-123-4567', 'info@hotelchaina.com', 8)
-    ON CONFLICT DO NOTHING;
+ON CONFLICT DO NOTHING;
 
 
-    INSERT INTO Hotel (hotel_id, country, region, street_name, street_number, postal_code, email, phonenumber, rating, number_rooms, chainname)
-    VALUES
-    (1, 'Canada', 'Ontario', 'Yonge Street', 234, 'M5B1N4', 'hotel1@hotelchaina.com', '1-416-123-4567', 7.5, 5, 'Hotel Chain A'),
-    (2, 'Canada', 'Ontario', 'Queen Street', 345, 'M5H2M5', 'hotel2@hotelchaina.com', '1-416-234-5678', 6.2, 5, 'Hotel Chain A'),
-    (3, 'Canada', 'Ontario', 'Bloor Street', 456, 'M5S1X9', 'hotel3@hotelchaina.com', '1-416-345-6789', 8.3, 5, 'Hotel Chain A'),
-    (4, 'Canada', 'Quebec', 'Rue Sainte-Catherine', 567, 'H2L2E5', 'hotel4@hotelchaina.com', '1-514-456-7890', 5, 160, 'Hotel Chain A'),
-    (5, 'USA', 'California', 'Sunset Boulevard', 678, '90028', 'hotel5@hotelchaina.com', '1-323-567-8901', 8.1, 5, 'Hotel Chain A'),
-    (6, 'USA', 'California', 'Beverly Hills', 789, '90210', 'hotel6@hotelchaina.com', '1-310-678-9012', 9.0, 5, 'Hotel Chain A'),
-    (7, 'Mexico', 'Jalisco', 'Avenida de las Rosas', 890, '44110', 'hotel7@hotelchaina.com', '52-33-1234-5678', 7.2, 5, 'Hotel Chain A'),
-    (8, 'Mexico', 'Jalisco', 'Avenida Vallarta', 901, '44140', 'hotel8@hotelchaina.com', '52-33-2345-6789', 5.8, 5, 'Hotel Chain A')
-    ON CONFLICT DO NOTHING;
+INSERT INTO Hotel (hotel_id, country, region, street_name, street_number, postal_code, email, phonenumber, rating, number_rooms, chainname)
+VALUES
+    (1, 'Canada', 'Ontario', 'Yonge Street', 234, 'M5B1N4', 'hotel1@hotelchaina.com', '1-416-123-4567', 1.5, 5, 'Hotel Chain A'),
+    (2, 'Canada', 'Ontario', 'Queen Street', 345, 'M5H2M5', 'hotel2@hotelchaina.com', '1-416-234-5678', 2.2, 5, 'Hotel Chain A'),
+    (3, 'Canada', 'Ontario', 'Bloor Street', 456, 'M5S1X9', 'hotel3@hotelchaina.com', '1-416-345-6789', 4.3, 5, 'Hotel Chain A'),
+    (4, 'Canada', 'Quebec', 'Rue Sainte-Catherine', 567, 'H2L2E5', 'hotel4@hotelchaina.com', '1-514-456-7890', 5, 5, 'Hotel Chain A'),
+    (5, 'USA', 'California', 'Sunset Boulevard', 678, '90028', 'hotel5@hotelchaina.com', '1-323-567-8901', 2.1, 5, 'Hotel Chain A'),
+    (6, 'USA', 'California', 'Beverly Hills', 789, '90210', 'hotel6@hotelchaina.com', '1-310-678-9012', 4.0, 5, 'Hotel Chain A'),
+    (7, 'Mexico', 'Jalisco', 'Avenida de las Rosas', 890, '44110', 'hotel7@hotelchaina.com', '52-33-1234-5678', 3.2, 5, 'Hotel Chain A'),
+    (8, 'Mexico', 'Jalisco', 'Avenida Vallarta', 901, '44140', 'hotel8@hotelchaina.com', '52-33-2345-6789', 3.8, 5, 'Hotel Chain A')
+ON CONFLICT DO NOTHING;
 
 
-    INSERT INTO Hotel_Chain (chainname, country, region, street_name, street_number, postal_code, phonenumber, email, number_hotels)
-    VALUES
+INSERT INTO Hotel_Chain (chainname, country, region, street_name, street_number, postal_code, phonenumber, email, number_hotels)
+VALUES
     ('Hotel Chain B', 'USA', 'California', 'Sunset Boulevard', 456, '90210', '1-310-555-1234', 'info@hotelchainb.com', 8)
-    ON CONFLICT DO NOTHING;
+ON CONFLICT DO NOTHING;
 
 
 
-    INSERT INTO Hotel (hotel_id, country, region, street_name, street_number, postal_code, email, phonenumber, rating, number_rooms, chainname)
-    VALUES
-    (9, 'USA', 'New York', 'Park Avenue', 234, '10022', 'hotel9@hotelchainb.com', '1-212-555-1234', 8.7, 5, 'Hotel Chain B'),
-    (10, 'USA', 'California', 'Rodeo Drive', 345, '90210', 'hotel10@hotelchainb.com', '1-310-555-5678', 6.9, 5, 'Hotel Chain B'),
-    (11, 'Canada', 'Quebec', 'Rue Sainte-Catherine', 456, 'H2L2E5', 'hotel11@hotelchainb.com', '1-514-555-6789', 7.8, 5, 'Hotel Chain B'),
-    (12, 'Mexico', 'Quintana Roo', 'Avenida Tulum', 567, '77500', 'hotel12@hotelchainb.com', '52-984-555-2345', 9.2, 5, 'Hotel Chain B'),
-    (13, 'USA', 'Florida', 'Collins Avenue', 678, '33139', 'hotel13@hotelchainb.com', '1-305-555-3456', 7.2, 5, 'Hotel Chain B'),
-    (14, 'USA', 'Hawaii', 'Waikiki Beach', 789, '96815', 'hotel14@hotelchainb.com', '1-808-555-7890', 8.1, 5, 'Hotel Chain B'),
-    (15, 'Mexico', 'Quintana Roo', 'Avenida Kukulcan', 890, '77500', 'hotel15@hotelchainb.com', '52-998-555-4567', 6.5, 5, 'Hotel Chain B'),
-    (16, 'Canada', 'Alberta', 'Banff Avenue', 901, 'T1L1C8', 'hotel16@hotelchainb.com', '1-403-555-8901', 7.4, 5, 'Hotel Chain B')
-    ON CONFLICT DO NOTHING;
+INSERT INTO Hotel (hotel_id, country, region, street_name, street_number, postal_code, email, phonenumber, rating, number_rooms, chainname)
+VALUES
+    (9, 'USA', 'New York', 'Park Avenue', 234, '10022', 'hotel9@hotelchainb.com', '1-212-555-1234', 84.7, 5, 'Hotel Chain B'),
+    (10, 'USA', 'California', 'Rodeo Drive', 345, '90210', 'hotel10@hotelchainb.com', '1-310-555-5678', 4.9, 5, 'Hotel Chain B'),
+    (11, 'Canada', 'Quebec', 'Rue Sainte-Catherine', 456, 'H2L2E5', 'hotel11@hotelchainb.com', '1-514-555-6789', 3.8, 5, 'Hotel Chain B'),
+    (12, 'Mexico', 'Quintana Roo', 'Avenida Tulum', 567, '77500', 'hotel12@hotelchainb.com', '52-984-555-2345', 2.2, 5, 'Hotel Chain B'),
+    (13, 'USA', 'Florida', 'Collins Avenue', 678, '33139', 'hotel13@hotelchainb.com', '1-305-555-3456', 4.2, 5, 'Hotel Chain B'),
+    (14, 'USA', 'Hawaii', 'Waikiki Beach', 789, '96815', 'hotel14@hotelchainb.com', '1-808-555-7890', 1.1, 5, 'Hotel Chain B'),
+    (15, 'Mexico', 'Quintana Roo', 'Avenida Kukulcan', 890, '77500', 'hotel15@hotelchainb.com', '52-998-555-4567', 2.5, 5, 'Hotel Chain B'),
+    (16, 'Canada', 'Alberta', 'Banff Avenue', 901, 'T1L1C8', 'hotel16@hotelchainb.com', '1-403-555-8901', 3.4, 5, 'Hotel Chain B')
+ON CONFLICT DO NOTHING;
 
 
-    INSERT INTO Hotel_Chain (chainname, country, region, street_name, street_number, postal_code, phonenumber, email, number_hotels)
-    VALUES
+INSERT INTO Hotel_Chain (chainname, country, region, street_name, street_number, postal_code, phonenumber, email, number_hotels)
+VALUES
     ('Hotel Chain C', 'Mexico', 'Jalisco', 'Avenida de las Rosas', 789, '44110', '52-33-1235-4567', 'info@hotelchainc.com', 8)
-    ON CONFLICT DO NOTHING;
+ON CONFLICT DO NOTHING;
 
 
-    INSERT INTO Hotel (hotel_id, country, region, street_name, street_number, postal_code, email, phonenumber, rating, number_rooms, chainname)
-    VALUES
-    (17, 'USA', 'California', 'Beverly Hills', 567, '90210', 'hotel17@hotelchainc.com', '1-555-123-4567', 8.5, 5, 'Hotel Chain C'),
-    (18, 'Canada', 'Ontario', 'Yonge Street', 678, 'M5B1S6', 'hotel18@hotelchainc.com', '1-555-234-5678', 7.3, 5, 'Hotel Chain C'),
-    (19, 'USA', 'Florida', 'Ocean Drive', 789, '33139', 'hotel19@hotelchainc.com', '1-555-345-6789', 8.9, 5, 'Hotel Chain C'),
-    (20, 'USA', 'Nevada', 'Las Vegas Boulevard', 890, '89109', 'hotel20@hotelchainc.com', '1-555-456-7890', 9.1, 5, 'Hotel Chain C'),
-    (21, 'Mexico', 'Quintana Roo', 'Avenida Tulum', 901, '77500', 'hotel21@hotelchainc.com', '52-555-678-1234', 6.8, 5, 'Hotel Chain C'),
-    (22, 'USA', 'California', 'Rodeo Drive', 123, '90210', 'hotel22@hotelchainc.com', '1-555-567-8901', 7.7, 5, 'Hotel Chain C'),
-    (23, 'Canada', 'British Columbia', 'Granville Street', 234, 'V6B2G7', 'hotel23@hotelchainc.com', '1-555-678-9012', 7.1, 5, 'Hotel Chain C'),
-    (24, 'Mexico', 'Baja California Sur', 'Playa El Medano', 345, '23410', 'hotel24@hotelchainc.com', '52-555-789-0123', 8.3, 5, 'Hotel Chain C')
-    ON CONFLICT DO NOTHING;
+INSERT INTO Hotel (hotel_id, country, region, street_name, street_number, postal_code, email, phonenumber, rating, number_rooms, chainname)
+VALUES
+    (17, 'USA', 'California', 'Beverly Hills', 567, '90210', 'hotel17@hotelchainc.com', '1-555-123-4567', 3.5, 5, 'Hotel Chain C'),
+    (18, 'Canada', 'Ontario', 'Yonge Street', 678, 'M5B1S6', 'hotel18@hotelchainc.com', '1-555-234-5678', 2.3, 5, 'Hotel Chain C'),
+    (19, 'USA', 'Florida', 'Ocean Drive', 789, '33139', 'hotel19@hotelchainc.com', '1-555-345-6789', 3.9, 5, 'Hotel Chain C'),
+    (20, 'USA', 'Nevada', 'Las Vegas Boulevard', 890, '89109', 'hotel20@hotelchainc.com', '1-555-456-7890', 4.1, 5, 'Hotel Chain C'),
+    (21, 'Mexico', 'Quintana Roo', 'Avenida Tulum', 901, '77500', 'hotel21@hotelchainc.com', '52-555-678-1234', 4.8, 5, 'Hotel Chain C'),
+    (22, 'USA', 'California', 'Rodeo Drive', 123, '90210', 'hotel22@hotelchainc.com', '1-555-567-8901', 3.7, 5, 'Hotel Chain C'),
+    (23, 'Canada', 'British Columbia', 'Granville Street', 234, 'V6B2G7', 'hotel23@hotelchainc.com', '1-555-678-9012', 4.1, 5, 'Hotel Chain C'),
+    (24, 'Mexico', 'Baja California Sur', 'Playa El Medano', 345, '23410', 'hotel24@hotelchainc.com', '52-555-789-0123', 4.3, 5, 'Hotel Chain C')
+ON CONFLICT DO NOTHING;
 
 
 
-    INSERT INTO Hotel_Chain (chainname, country, region, street_name, street_number, postal_code, phonenumber, email, number_hotels)
-    VALUES
+INSERT INTO Hotel_Chain (chainname, country, region, street_name, street_number, postal_code, phonenumber, email, number_hotels)
+VALUES
     ('Hotel Chain D', 'Canada', 'Quebec', 'Sainte-Catherine Street', 101, 'H3B1A3', '1-514-555-6789', 'info@hotelchaind.com', 8)
-    ON CONFLICT DO NOTHING;
+ON CONFLICT DO NOTHING;
 
 
-    INSERT INTO Hotel (hotel_id, country, region, street_name, street_number, postal_code, email, phonenumber, rating, number_rooms, chainname)
-    VALUES
-    (25, 'USA', 'New York', '5th Avenue', 5678, '10022', 'hotel25@hotelchaind.com', '1-212-555-1234', 8.8, 5, 'Hotel Chain D'),
-    (26, 'Canada', 'Quebec', 'Rue Sainte-Catherine', 6789, 'H2L2G8', 'hotel26@hotelchaind.com', '1-514-555-1234', 7.6, 5, 'Hotel Chain D'),
-    (27, 'USA', 'California', 'Pacific Coast Highway', 7890, '90265', 'hotel27@hotelchaind.com', '1-310-555-1234', 9.2, 5, 'Hotel Chain D'),
-    (28, 'USA', 'New York', '8th Avenue', 5690, '75201', 'hotel28@hotelchaind.com', '1-212-555-1234', 7.9, 5, 'Hotel Chain D'),
-    (29, 'Mexico', 'Jalisco', 'Avenida Vallarta', 3456, '45040', 'hotel29@hotelchaind.com', '52-33-555-1234', 6.9, 5, 'Hotel Chain D'),
-    (30, 'USA', 'Hawaii', 'Waikiki Beach Walk', 7891, '96815', 'hotel30@hotelchaind.com', '1-808-555-1234', 8.5, 5, 'Hotel Chain D'),
-    (31, 'Canada', 'Alberta', 'Banff Avenue', 2345, 'T1L1C3', 'hotel31@hotelchaind.com', '1-403-555-1234', 7.2, 5, 'Hotel Chain D'),
-    (32, 'Mexico', 'Quintana Roo', 'Cancun Hotel Zone', 4567, '77500', 'hotel32@hotelchaind.com', '52-998-555-1234', 8.0, 5, 'Hotel Chain D')
-    ON CONFLICT DO NOTHING;
+INSERT INTO Hotel (hotel_id, country, region, street_name, street_number, postal_code, email, phonenumber, rating, number_rooms, chainname)
+VALUES
+    (25, 'USA', 'New York', '5th Avenue', 5678, '10022', 'hotel25@hotelchaind.com', '1-212-555-1234', 3.8, 5, 'Hotel Chain D'),
+    (26, 'Canada', 'Quebec', 'Rue Sainte-Catherine', 6789, 'H2L2G8', 'hotel26@hotelchaind.com', '1-514-555-1234', 4.6, 5, 'Hotel Chain D'),
+    (27, 'USA', 'California', 'Pacific Coast Highway', 7890, '90265', 'hotel27@hotelchaind.com', '1-310-555-1234', 3.2, 5, 'Hotel Chain D'),
+    (28, 'USA', 'New York', '8th Avenue', 5690, '75201', 'hotel28@hotelchaind.com', '1-212-555-1234', 4.9, 5, 'Hotel Chain D'),
+    (29, 'Mexico', 'Jalisco', 'Avenida Vallarta', 3456, '45040', 'hotel29@hotelchaind.com', '52-33-555-1234', 2.9, 5, 'Hotel Chain D'),
+    (30, 'USA', 'Hawaii', 'Waikiki Beach Walk', 7891, '96815', 'hotel30@hotelchaind.com', '1-808-555-1234', 3.5, 5, 'Hotel Chain D'),
+    (31, 'Canada', 'Alberta', 'Banff Avenue', 2345, 'T1L1C3', 'hotel31@hotelchaind.com', '1-403-555-1234', 4.2, 5, 'Hotel Chain D'),
+    (32, 'Mexico', 'Quintana Roo', 'Cancun Hotel Zone', 4567, '77500', 'hotel32@hotelchaind.com', '52-998-555-1234', 3.0, 5, 'Hotel Chain D')
+ON CONFLICT DO NOTHING;
 
 
 
 
-    INSERT INTO Hotel_Chain (chainname, country, region, street_name, street_number, postal_code, phonenumber, email, number_hotels)
-    VALUES ('Hotel Chain E', 'USA', 'New York', 'Fifth Avenue', 789, '10019', '1-212-555-4321', 'info@hotelchaine.com', 8)
-    ON CONFLICT DO NOTHING;
+INSERT INTO Hotel_Chain (chainname, country, region, street_name, street_number, postal_code, phonenumber, email, number_hotels)
+VALUES ('Hotel Chain E', 'USA', 'New York', 'Fifth Avenue', 789, '10019', '1-212-555-4321', 'info@hotelchaine.com', 8)
+ON CONFLICT DO NOTHING;
 
 
-    INSERT INTO Hotel (hotel_id, country, region, street_name, street_number, postal_code, email, phonenumber, rating, number_rooms, chainname)
-    VALUES
-    (33, 'USA', 'Florida', 'Ocean Drive', 5678, '33139', 'hotel33@hotelchaine.com', '1-568-543-9980', 8.3, 5, 'Hotel Chain E'),
-    (34, 'USA', 'California', 'Sunset Boulevard', 1234, '90069', 'hotel34@hotelchaine.com', '1-543-876-3456', 9.1, 5, 'Hotel Chain E'),
-    (35, 'Canada', 'British Columbia', 'Robson Street', 6789, 'V6E1C5', 'hotel35@hotelchaine.com', '1-453-376-0009', 7.6, 5, 'Hotel Chain E'),
-    (36, 'USA', 'Nevada', 'Las Vegas Boulevard', 9012, '89109', 'hotel36@hotelchaine.com', '1-547-345-6723', 8.9, 5, 'Hotel Chain E'),
-    (37, 'Mexico', 'Baja California Sur', 'Medano Beach', 3456, '23410', 'hotel37@hotelchaine.com', '52-34-3324-7435', 7.4, 5, 'Hotel Chain E'),
-    (38, 'USA', 'Illinois', 'North Michigan Avenue', 7890, '60611', 'hotel38@hotelchaine.com', '1-453-386-8465', 8.0, 5, 'Hotel Chain E'),
-    (39, 'Canada', 'British Comumbia', 'Yonge Street', 2345, 'M5B2H1', 'hotel39@hotelchaine.com', '1-642-998-7638', 7.2, 5, 'Hotel Chain E'),
-    (40, 'Mexico', 'Quintana Roo', 'Playa del Carmen', 4567, '77710', 'hotel40@hotelchaine.com', '52-74-6638-3397', 8.5, 5, 'Hotel Chain E')
-    ON CONFLICT DO NOTHING;
+INSERT INTO Hotel (hotel_id, country, region, street_name, street_number, postal_code, email, phonenumber, rating, number_rooms, chainname)
+VALUES
+    (33, 'USA', 'Florida', 'Ocean Drive', 5678, '33139', 'hotel33@hotelchaine.com', '1-568-543-9980', 1.3, 5, 'Hotel Chain E'),
+    (34, 'USA', 'California', 'Sunset Boulevard', 1234, '90069', 'hotel34@hotelchaine.com', '1-543-876-3456', 2.1, 5, 'Hotel Chain E'),
+    (35, 'Canada', 'British Columbia', 'Robson Street', 6789, 'V6E1C5', 'hotel35@hotelchaine.com', '1-453-376-0009', 3.6, 5, 'Hotel Chain E'),
+    (36, 'USA', 'Nevada', 'Las Vegas Boulevard', 9012, '89109', 'hotel36@hotelchaine.com', '1-547-345-6723', 4.9, 5, 'Hotel Chain E'),
+    (37, 'Mexico', 'Baja California Sur', 'Medano Beach', 3456, '23410', 'hotel37@hotelchaine.com', '52-34-3324-7435', 4.4, 5, 'Hotel Chain E'),
+    (38, 'USA', 'Illinois', 'North Michigan Avenue', 7890, '60611', 'hotel38@hotelchaine.com', '1-453-386-8465', 3.0, 5, 'Hotel Chain E'),
+    (39, 'Canada', 'British Comumbia', 'Yonge Street', 2345, 'M5B2H1', 'hotel39@hotelchaine.com', '1-642-998-7638', 2.2, 5, 'Hotel Chain E'),
+    (40, 'Mexico', 'Quintana Roo', 'Playa del Carmen', 4567, '77710', 'hotel40@hotelchaine.com', '52-74-6638-3397', 4.5, 5, 'Hotel Chain E')
+ON CONFLICT DO NOTHING;
+
 
 
     --ROOM INERSTS----------------------------------------------------
