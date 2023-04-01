@@ -19,8 +19,7 @@
         <h1>YOUR REQUEST WAS A SUCCESS! go back to landing page below</h1>
          <h2><%=message%></h2>
                      <div class="card-body" id="card">
-                         <h4 class="card-title">Book a room now!</h4>
-                         <a class="btn btn-primary" id="show-btn" href="hotel.jsp">Book a room</a>
+                         <a class="btn btn-primary" id="show-btn" href="index.jsp">go back to landing</a>
 
         </div>
         </div>

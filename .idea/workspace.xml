@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="33243d05-e250-4a28-a29b-7d84de82c157" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db-hotel.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db-hotel.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/insert-customer-controller.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/insert-customer-controller.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/insert-renting-controller.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/insert-renting-controller.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/success.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/success.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
